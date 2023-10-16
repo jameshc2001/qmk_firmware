@@ -113,6 +113,7 @@ static void oled_render_keylog(void) {
     oled_write(depad_str(last_keycode_str, ' '), false);
     oled_write_P(PSTR(":"), false);
     oled_write_char(key_name, false);
+    oled_write_char('\n', false);
 }
 
 // static void render_bootmagic_status(bool status) {
@@ -141,6 +142,11 @@ __attribute__((weak)) void oled_render_logo(void) {
     oled_write_P(crkbd_logo, false);
 }
 
+static void oled_render_caps_lock(void) {
+    led_t led_state = host_keyboard_led_state();
+    oled_write_ln_P(led_state.caps_lock ? PSTR("Caps Lock: On") : PSTR("Caps Lock: Off"), false);
+}
+
 bool oled_task_kb(void) {
     if (!oled_task_user()) {
         return false;
@@ -148,6 +154,7 @@ bool oled_task_kb(void) {
     if (is_keyboard_master()) {
         oled_render_layer_state();
         oled_render_keylog();
+        oled_render_caps_lock();
     } else {
         oled_render_logo();
     }
