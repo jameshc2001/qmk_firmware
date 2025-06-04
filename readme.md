@@ -50,3 +50,5 @@ qmk compile -kb crkbd/rev1 -km via
 cd /c/Users/james/qmk_firmware/.build
 
 qmk flash crkbd_rev1_via.hex
+
+I've added my current via layout to the root of the project: ...\qmk_firmware\crkbd.layout.json
