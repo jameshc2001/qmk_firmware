@@ -34,3 +34,19 @@ QMK is developed and maintained by Jack Humbert of OLKB with contributions from 
 ## Official Website
 
 [qmk.fm](https://qmk.fm) is the official website of QMK, where you can find links to this page, the documentation, and the keyboards supported by QMK.
+
+## James Specific Stuff
+
+I'm going to forget how this all works so brief explanation:
+
+Your keyboard is this one ...\qmk_firmware\keyboards\crkbd\crkbd.c
+
+To flash the firmware you use QMK MSYS, it is installed on your system already!
+
+Commands in order:
+
+qmk compile -kb crkbd/rev1 -km via
+
+cd /c/Users/james/qmk_firmware/.build
+
+qmk flash crkbd_rev1_via.hex
